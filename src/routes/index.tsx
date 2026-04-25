@@ -55,40 +55,28 @@ function Hero() {
       <CircuitTraces />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" />
 
-      <motion.div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-40">
+      <div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-40">
         <div className="grid lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1 border border-acid/40 bg-acid/5 font-mono text-[11px] uppercase tracking-[0.2em] text-acid mb-8"
-            >
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-acid/40 bg-acid/5 font-mono text-[11px] uppercase tracking-[0.2em] text-acid mb-8">
               <Sparkles className="w-3 h-3" />
               v1.0 — portfolio.live
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-[13vw] sm:text-[10vw] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] font-extrabold tracking-tighter"
-            >
+            <h1 className="font-display text-[13vw] sm:text-[10vw] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] font-extrabold tracking-tighter">
               I BUILD<br />
               <span className="text-acid text-glow italic">things</span><br />
               <span className="text-muted-foreground/60">that think.</span>
-            </motion.h1>
+            </h1>
 
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              className="mt-10 max-w-xl"
-            >
+            <div className="mt-10 max-w-xl">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                 Hardware, startups, and software stitched together with curiosity.
                 BTech CSE — AI/ML student turning ideas into circuits, products, and code.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-              className="mt-10 flex flex-wrap gap-4"
-            >
+            <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/work"
                 className="group inline-flex items-center gap-3 bg-acid text-primary-foreground px-6 py-3 font-mono text-sm uppercase tracking-widest hover:bg-acid-glow transition-all acid-glow"
@@ -102,34 +90,14 @@ function Hero() {
               >
                 contact.txt
               </Link>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
-            className="lg:col-span-4"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 1 }}
-              className="relative mb-5 border border-acid/30 overflow-hidden aspect-[4/5] bg-card group"
-            >
+          <div className="lg:col-span-4">
+            <div className="relative mb-5 border border-acid/30 overflow-hidden aspect-[4/5] bg-card group">
               {/* Glitch Animation for the Image */}
-              <motion.div
-                className="w-full h-full relative"
-                animate={{
-                  x: [0, -2, 2, -1, 0],
-                  y: [0, 1, -1, 0],
-                }}
-                transition={{
-                  duration: 0.2,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  repeatDelay: 5,
-                }}
-              >
-                <motion.img
+              <div className="w-full h-full relative">
+                <img
                   src={portrait}
                   alt="Portrait"
                   className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
@@ -140,7 +108,7 @@ function Hero() {
                 />
                 
                 {/* Color Ghosting Effect on Hover */}
-                <motion.img
+                <img
                   src={portrait}
                   alt=""
                   className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-30 mix-blend-screen translate-x-1"
@@ -150,7 +118,7 @@ function Hero() {
                     WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
                   }}
                 />
-              </motion.div>
+              </div>
 
               {/* Advanced Scanline & Noise Overlay */}
               <div className="absolute inset-0 opacity-30 pointer-events-none bg-noise mix-blend-overlay" />
@@ -167,7 +135,7 @@ function Hero() {
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
               
               <div className="absolute bottom-4 left-4 right-4 h-px bg-acid/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-center" />
-            </motion.div>
+            </div>
             <div className="relative border border-acid/30 bg-card/60 backdrop-blur-sm p-5 scanline overflow-hidden">
               <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground mb-3 uppercase tracking-widest">
                 <span>terminal — boot.log</span>
@@ -184,9 +152,9 @@ function Hero() {
                 <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -195,16 +163,11 @@ function Marquee() {
   const items = ["HARDWARE", "★", "AI / ML", "★", "STARTUPS", "★", "ROBOTICS", "★", "PRODUCT", "★", "CODE", "★"];
   const repeated = [...items, ...items, ...items, ...items];
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 2.5, duration: 1 }}
-      className="relative z-10 border-y border-border bg-acid text-primary-foreground py-4 overflow-hidden"
-    >
+    <div className="relative z-10 border-y border-border bg-acid text-primary-foreground py-4 overflow-hidden">
       <div className="flex animate-marquee whitespace-nowrap font-display font-extrabold text-3xl tracking-tight">
         {repeated.map((item, i) => <span key={i} className="mx-6">{item}</span>)}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -264,12 +227,8 @@ function FeaturedWork() {
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
         {PROJECTS.filter(p => p.featured).map((p, i) => (
-          <motion.article
+          <article
             key={p.slug}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
             className="flex h-full"
           >
             <Link
@@ -302,7 +261,7 @@ function FeaturedWork() {
                 </div>
               </div>
             </Link>
-          </motion.article>
+          </article>
         ))}
       </div>
     </section>

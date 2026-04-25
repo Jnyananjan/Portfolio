@@ -8,7 +8,7 @@ import { PROJECTS } from "@/data/projects";
 export const Route = createFileRoute("/work/")({
   head: () => ({
     meta: [
-      { title: "Work — Builder.exe" },
+      { title: "Work — Jnyananjan" },
       { name: "description", content: "All projects: TechyPad, Line-Following Robot, LED Watch, Pizza Hut Web Menu, Cricket Score Display, and Link Hub Website." },
     ],
   }),
@@ -35,12 +35,8 @@ function WorkPage() {
       <section className="px-6 pb-32 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch border-t border-border pt-12">
           {PROJECTS.map((p, i) => (
-            <motion.div
+            <div
               key={p.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
               className="flex h-full"
             >
               <Link
@@ -73,7 +69,7 @@ function WorkPage() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

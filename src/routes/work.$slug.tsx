@@ -15,12 +15,12 @@ export const Route = createFileRoute("/work/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.project.title} — Builder.exe` },
+          { title: `${loaderData.project.title} — Jnyananjan` },
           { name: "description", content: loaderData.project.blurb },
-          { property: "og:title", content: `${loaderData.project.title} — Builder.exe` },
+          { property: "og:title", content: `${loaderData.project.title} — Jnyananjan` },
           { property: "og:description", content: loaderData.project.blurb },
         ]
-      : [{ title: "Project — Builder.exe" }],
+      : [{ title: "Project — Jnyananjan" }],
   }),
   notFoundComponent: () => (
     <main className="bg-background text-foreground min-h-screen">
@@ -64,13 +64,9 @@ function ProjectPage() {
               <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">
                 [{project.n}] {project.tag}
               </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="font-display text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.85]"
-              >
+              <h1 className="font-display text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.85]">
                 {project.title}
-              </motion.h1>
+              </h1>
             </div>
             <div className="lg:col-span-3 flex justify-start lg:justify-end">
               <div className="w-20 h-20 border border-acid/40 flex items-center justify-center text-acid acid-glow">

@@ -84,7 +84,7 @@ function ContactPage() {
               <Mail className="w-4 h-4 text-acid mt-1" />
               <div>
                 <div className="text-muted-foreground text-[11px] uppercase tracking-widest">email</div>
-                <a href="mailto:hello@builder.dev" className="hover:text-acid">hello@builder.dev</a>
+                <a href="mailto:hello@jnyananjan.com" className="hover:text-acid">hello@jnyananjan.com</a>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -98,14 +98,14 @@ function ContactPage() {
               <Github className="w-4 h-4 text-acid mt-1" />
               <div>
                 <div className="text-muted-foreground text-[11px] uppercase tracking-widest">github</div>
-                <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-acid">@builder</a>
+                <a href="https://github.com/jnyananjan" target="_blank" rel="noreferrer" className="hover:text-acid">@jnyananjan</a>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <Linkedin className="w-4 h-4 text-acid mt-1" />
               <div>
                 <div className="text-muted-foreground text-[11px] uppercase tracking-widest">linkedin</div>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-acid">/in/builder</a>
+                <a href="https://linkedin.com/in/jnyananjan" target="_blank" rel="noreferrer" className="hover:text-acid">/in/jnyananjan</a>
               </div>
             </div>
           </div>
