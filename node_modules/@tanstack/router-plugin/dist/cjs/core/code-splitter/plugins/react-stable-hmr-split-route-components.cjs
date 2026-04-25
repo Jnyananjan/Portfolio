@@ -1,0 +1,47 @@
+const require_runtime = require("../../../_virtual/_rolldown/runtime.cjs");
+const require_hmr_hot_expression = require("../../hmr-hot-expression.cjs");
+const require_utils = require("../../utils.cjs");
+let _babel_template = require("@babel/template");
+_babel_template = require_runtime.__toESM(_babel_template);
+let _babel_types = require("@babel/types");
+_babel_types = require_runtime.__toESM(_babel_types);
+//#region src/core/code-splitter/plugins/react-stable-hmr-split-route-components.ts
+function capitalizeIdentifier(str) {
+	return str[0].toUpperCase() + str.slice(1);
+}
+function createHotDataKey(exportName) {
+	return `tsr-split-component:${exportName}`;
+}
+var buildStableSplitComponentStatements = _babel_template.statements(`
+    const %%stableComponentIdent%% = (() => {
+      const hot = %%hotExpression%%
+      const hotData = hot ? (hot.data ??= {}) : undefined
+      return hotData?.[%%hotDataKey%%] ?? %%lazyRouteComponentIdent%%(%%localImporterIdent%%, %%exporterIdent%%)
+    })()
+    if (%%hotExpression%%) {
+      ((%%hotExpression%%).data ??= {})[%%hotDataKey%%] = %%stableComponentIdent%%
+    }
+  `, { syntacticPlaceholders: true });
+function createReactStableHmrSplitRouteComponentsPlugin(opts) {
+	return {
+		name: "react-stable-hmr-split-route-components",
+		onSplitRouteProperty(ctx) {
+			if (ctx.splitNodeMeta.splitStrategy !== "lazyRouteComponent") return;
+			const stableComponentIdent = require_utils.getUniqueProgramIdentifier(ctx.programPath, `TSRSplit${capitalizeIdentifier(ctx.splitNodeMeta.exporterIdent)}`);
+			const hotDataKey = createHotDataKey(ctx.splitNodeMeta.exporterIdent);
+			ctx.insertionPath.insertBefore(buildStableSplitComponentStatements({
+				stableComponentIdent,
+				hotDataKey: _babel_types.stringLiteral(hotDataKey),
+				hotExpression: require_hmr_hot_expression.createHmrHotExpressionAst(opts?.hotExpression ?? ctx.opts.hmrHotExpression),
+				lazyRouteComponentIdent: _babel_types.identifier(ctx.lazyRouteComponentIdent),
+				localImporterIdent: _babel_types.identifier(ctx.splitNodeMeta.localImporterIdent),
+				exporterIdent: _babel_types.stringLiteral(ctx.splitNodeMeta.exporterIdent)
+			}));
+			return _babel_types.identifier(stableComponentIdent.name);
+		}
+	};
+}
+//#endregion
+exports.createReactStableHmrSplitRouteComponentsPlugin = createReactStableHmrSplitRouteComponentsPlugin;
+
+//# sourceMappingURL=react-stable-hmr-split-route-components.cjs.map
