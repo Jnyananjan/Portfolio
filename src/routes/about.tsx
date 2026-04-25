@@ -3,6 +3,7 @@ import { ArrowUpRight, CircuitBoard, Cpu, Globe, Bot, Zap, Sparkles } from "luci
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import portrait from "@/assets/portrait.jpg";
+import { ABOUT_STACK, ABOUT_TIMELINE } from "@/data/about";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,24 +16,6 @@ export const Route = createFileRoute("/about")({
   }),
   component: AboutPage,
 });
-
-export const STACK = [
-  { name: "Embedded C", icon: CircuitBoard },
-  { name: "Arduino / ESP", icon: Cpu },
-  { name: "Python", icon: Zap },
-  { name: "PyTorch", icon: Sparkles },
-  { name: "React", icon: Globe },
-  { name: "TensorFlow", icon: Bot },
-  { name: "PCB Design", icon: CircuitBoard },
-  { name: "Linux", icon: Cpu },
-];
-
-export const TIMELINE = [
-  { year: "now", title: "BTech CSE — AI/ML", desc: "Studying neural systems while shipping hardware on the side." },
-  { year: "2026", title: "Founded TechyPad", desc: "Took a customisable macropad from KiCad sketch to shipping product." },
-  { year: "2026", title: "Built two AI-augmented sites", desc: "Owned the ideas, used AI as a collaborator to ship at speed." },
-  { year: "2026", title: "Line-Following Robot", desc: "First end-to-end hardware project. PID tuning taught me patience." },
-];
 
 function AboutPage() {
   return (
@@ -79,22 +62,22 @@ function AboutPage() {
             AI/ML specialisation. I treat coursework, side projects, and the startup as one big workshop.
           </p>
           <div className="grid sm:grid-cols-2 gap-6 font-mono text-sm pt-4">
-          <div className="border-l-2 border-acid pl-4">
-            <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">discipline</div>
-            <div>BTech — CSE<br />AI / ML track</div>
-          </div>
-          <div className="border-l-2 border-acid pl-4">
-            <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">obsession</div>
-            <div>Hardware × software<br />Products with personality</div>
-          </div>
-          <div className="border-l-2 border-acid pl-4">
-            <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">currently</div>
-            <div>Scaling TechyPad<br />Studying neural nets</div>
-          </div>
-          <div className="border-l-2 border-acid pl-4">
-            <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">philosophy</div>
-            <div>Idea {">"} tooling.<br />Ship before ready.</div>
-          </div>
+            <div className="border-l-2 border-acid pl-4">
+              <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">discipline</div>
+              <div>BTech — CSE<br />AI / ML track</div>
+            </div>
+            <div className="border-l-2 border-acid pl-4">
+              <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">obsession</div>
+              <div>Hardware × software<br />Products with personality</div>
+            </div>
+            <div className="border-l-2 border-acid pl-4">
+              <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">currently</div>
+              <div>Scaling TechyPad<br />Studying neural nets</div>
+            </div>
+            <div className="border-l-2 border-acid pl-4">
+              <div className="text-muted-foreground uppercase text-xs tracking-widest mb-2">philosophy</div>
+              <div>Idea {">"} tooling.<br />Ship before ready.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -104,7 +87,7 @@ function AboutPage() {
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
           <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">the road so far.</h2>
           <div className="space-y-px bg-border border border-border">
-            {TIMELINE.map((t) => (
+            {ABOUT_TIMELINE.map((t) => (
               <div key={t.title} className="bg-background grid grid-cols-12 gap-4 p-6 hover:bg-acid/5 transition-colors">
                 <div className="col-span-3 md:col-span-2 font-mono text-xs uppercase tracking-widest text-acid pt-1">{t.year}</div>
                 <div className="col-span-9 md:col-span-10">
@@ -123,7 +106,7 @@ function AboutPage() {
           the <span className="italic text-muted-foreground/70">toolkit.</span>
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border border border-border">
-          {STACK.map((s, i) => (
+          {ABOUT_STACK.map((s, i) => (
             <div key={s.name} className="bg-background p-8 flex flex-col items-start gap-4 hover:bg-acid hover:text-primary-foreground transition-all duration-300 group cursor-default">
               <s.icon className="w-7 h-7 text-acid group-hover:text-primary-foreground transition-colors" />
               <div>

@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles, CircuitBoard, Cpu, Globe, Bot, Zap } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CircuitTraces } from "@/components/site/CircuitTraces";
 import { PROJECTS } from "@/data/projects";
-import { TIMELINE, STACK } from "./about";
+
+import { ABOUT_TIMELINE, ABOUT_STACK } from "@/data/about";
 import portrait from "@/assets/portrait.jpg";
 
 export const Route = createFileRoute("/")({
@@ -106,7 +107,7 @@ function Hero() {
                     WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
                   }}
                 />
-                
+
                 {/* Color Ghosting Effect on Hover */}
                 <img
                   src={portrait}
@@ -123,17 +124,17 @@ function Hero() {
               {/* Advanced Scanline & Noise Overlay */}
               <div className="absolute inset-0 opacity-30 pointer-events-none bg-noise mix-blend-overlay" />
               <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
-              
+
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 pointer-events-none" />
-              
+
               <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-acid bg-background/80 px-2 py-0.5 border border-acid/30 backdrop-blur-md">
                 operator_id: 0x4F2
               </div>
-              
+
               {/* Animated Corner Brackets */}
               <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
-              
+
               <div className="absolute bottom-4 left-4 right-4 h-px bg-acid/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-center" />
             </div>
             <div className="relative border border-acid/30 bg-card/60 backdrop-blur-sm p-5 scanline overflow-hidden">
@@ -171,37 +172,6 @@ function Marquee() {
   );
 }
 
-function TimelineSection() {
-  return (
-    <section className="px-6 py-32 border-y border-border bg-surface relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
-      <div className="max-w-7xl mx-auto relative">
-        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
-        <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-16">
-          the road <span className="italic text-muted-foreground/70">so far.</span>
-        </h2>
-        <div className="space-y-px bg-border border border-border overflow-hidden rounded-sm">
-          {TIMELINE.map((t, i) => (
-            <motion.div
-              key={t.title}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-background grid grid-cols-12 gap-4 p-8 hover:bg-acid/5 transition-all group"
-            >
-              <div className="col-span-3 md:col-span-2 font-mono text-xs uppercase tracking-widest text-acid/60 group-hover:text-acid pt-1 transition-colors">{t.year}</div>
-              <div className="col-span-9 md:col-span-10">
-                <div className="font-display text-2xl md:text-3xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-300">{t.title}</div>
-                <div className="text-muted-foreground mt-2 max-w-2xl leading-relaxed">{t.desc}</div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function FeaturedWork() {
   return (
@@ -244,7 +214,7 @@ function FeaturedWork() {
                     <p.icon className="w-5 h-5" />
                   </div>
                 </div>
-                
+
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-4">
                     <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
@@ -252,8 +222,8 @@ function FeaturedWork() {
                     </h3>
                     {p.badge && (
                       <div className="px-2 py-0.5 bg-acid/10 border border-acid/20 text-acid font-mono text-[9px] uppercase tracking-widest rounded flex items-center gap-1.5">
-                         <span className="w-1.5 h-1.5 rounded-full bg-acid animate-pulse" />
-                         {p.badge.split(' ').pop()}
+                        <span className="w-1.5 h-1.5 rounded-full bg-acid animate-pulse" />
+                        {p.badge.split(' ').pop()}
                       </div>
                     )}
                   </div>
@@ -276,31 +246,46 @@ function FeaturedWork() {
   );
 }
 
+function TimelineSection() {
+  return (
+    <section className="px-6 py-20 border-y border-border bg-surface">
+      <div className="max-w-7xl mx-auto">
+        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
+        <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">the road so far.</h2>
+        <div className="space-y-px bg-border border border-border">
+          {ABOUT_TIMELINE.map((t) => (
+            <div key={t.title} className="bg-background grid grid-cols-12 gap-4 p-6 hover:bg-acid/5 transition-colors">
+              <div className="col-span-3 md:col-span-2 font-mono text-xs uppercase tracking-widest text-acid pt-1">{t.year}</div>
+              <div className="col-span-9 md:col-span-10">
+                <div className="font-display text-2xl font-bold tracking-tight">{t.title}</div>
+                <div className="text-muted-foreground mt-1">{t.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ToolkitSection() {
   return (
-    <section className="px-6 py-32 max-w-7xl mx-auto">
+    <section className="px-6 py-20 max-w-7xl mx-auto">
       <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// toolkit</div>
-      <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-16">
+      <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">
         the <span className="italic text-muted-foreground/70">toolkit.</span>
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border border border-border overflow-hidden rounded-sm">
-        {STACK.map((s, i) => (
-          <motion.div
-            key={s.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05 }}
-            className="bg-background p-10 flex flex-col items-start gap-6 hover:bg-acid hover:text-primary-foreground transition-all duration-500 group cursor-default"
-          >
-            <s.icon className="w-8 h-8 text-acid group-hover:text-primary-foreground transition-colors duration-500" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border border border-border">
+        {ABOUT_STACK.map((s, i) => (
+          <div key={s.name} className="bg-background p-8 flex flex-col items-start gap-4 hover:bg-acid hover:text-primary-foreground transition-all duration-300 group cursor-default">
+            <s.icon className="w-7 h-7 text-acid group-hover:text-primary-foreground transition-colors" />
             <div>
               <div className="font-mono text-[10px] text-muted-foreground group-hover:text-primary-foreground/70 uppercase tracking-widest">
                 /{String(i + 1).padStart(2, "0")}
               </div>
-              <div className="font-display font-bold text-2xl tracking-tight mt-1">{s.name}</div>
+              <div className="font-display font-bold text-xl tracking-tight mt-1">{s.name}</div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
