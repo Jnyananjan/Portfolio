@@ -7,16 +7,16 @@ import portrait from "@/assets/portrait.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Builder.exe" },
-      { name: "description", content: "BTech CSE AI/ML student, hardware tinkerer, and founder of TechyPad." },
-      { property: "og:title", content: "About — Builder.exe" },
-      { property: "og:description", content: "BTech CSE AI/ML student, hardware tinkerer, and founder of TechyPad." },
+      { title: "About — Jnyananjan" },
+      { name: "description", content: "Hardware tinkerer, founder of TechyPad, and explorer of AI/ML systems." },
+      { property: "og:title", content: "About — Jnyananjan" },
+      { property: "og:description", content: "Hardware tinkerer, founder of TechyPad, and explorer of AI/ML systems." },
     ],
   }),
   component: AboutPage,
 });
 
-const STACK = [
+export const STACK = [
   { name: "Embedded C", icon: CircuitBoard },
   { name: "Arduino / ESP", icon: Cpu },
   { name: "Python", icon: Zap },
@@ -27,11 +27,11 @@ const STACK = [
   { name: "Linux", icon: Cpu },
 ];
 
-const TIMELINE = [
+export const TIMELINE = [
   { year: "now", title: "BTech CSE — AI/ML", desc: "Studying neural systems while shipping hardware on the side." },
-  { year: "2024", title: "Founded TechyPad", desc: "Took a customisable macropad from KiCad sketch to shipping product." },
-  { year: "2024", title: "Built two AI-augmented sites", desc: "Owned the ideas, used AI as a collaborator to ship at speed." },
-  { year: "2023", title: "Line-Following Robot", desc: "First end-to-end hardware project. PID tuning taught me patience." },
+  { year: "2026", title: "Founded TechyPad", desc: "Took a customisable macropad from KiCad sketch to shipping product." },
+  { year: "2026", title: "Built two AI-augmented sites", desc: "Owned the ideas, used AI as a collaborator to ship at speed." },
+  { year: "2026", title: "Line-Following Robot", desc: "First end-to-end hardware project. PID tuning taught me patience." },
 ];
 
 function AboutPage() {

@@ -31,12 +31,12 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Builder.exe — BTech CSE AI/ML, Maker of TechyPad" },
       { name: "description", content: "Portfolio of a tech builder — line-following robots, the TechyPad customisable macropad startup, AI-assisted web builds, and CSE AI/ML research." },
-      { name: "author", content: "Builder" },
-      { property: "og:title", content: "Builder.exe — Hardware. Startups. AI." },
-      { property: "og:description", content: "From line-following robots to a customisable macropad startup. A maker portfolio." },
+      { name: "author", content: "Jnyananjan" },
+      { property: "og:title", content: "Jnyananjan — Hardware. Startups. AI." },
+      { property: "og:description", content: "From line-following robots to a customisable macropad startup. A maker portfolio by Jnyananjan." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Jnyananjan — Maker Portfolio" },
     ],
     links: [
       {

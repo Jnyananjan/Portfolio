@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CircuitTraces } from "@/components/site/CircuitTraces";
@@ -47,6 +47,7 @@ function ProjectPage() {
     <main className="bg-background text-foreground min-h-screen">
       <SiteNav />
 
+      {/* Header Section */}
       <section className="relative pt-40 pb-20 px-6 overflow-hidden grid-bg border-b border-border">
         <CircuitTraces />
         <div className="relative max-w-7xl mx-auto">
@@ -80,62 +81,123 @@ function ProjectPage() {
         </div>
       </section>
 
-      <section className="py-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
-        <aside className="lg:col-span-4 space-y-8">
-          <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-2">// year</div>
-            <div className="font-display text-2xl font-bold">{project.year}</div>
-          </div>
-          <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-2">// role</div>
-            <div className="font-display text-xl font-semibold">{project.role}</div>
-          </div>
-          <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-2">// stack</div>
-            <div className="flex flex-wrap gap-2">
-              {project.stack.map((s) => (
-                <span key={s} className="font-mono text-xs px-3 py-1 border border-border bg-card">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-            {project.highlights.map((h) => (
-              <div key={h.label}>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{h.label}</div>
-                <div className="font-display font-bold text-acid mt-1">{h.value}</div>
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-16">
+          {/* Sidebar Info */}
+          <aside className="lg:col-span-4 space-y-12">
+            <div>
+              <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-4">// metadata</div>
+              <div className="space-y-6">
+                <div>
+                  <div className="text-muted-foreground text-xs uppercase tracking-widest mb-1">Year</div>
+                  <div className="font-display text-xl font-bold">{project.year}</div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground text-xs uppercase tracking-widest mb-1">Role</div>
+                  <div className="font-display text-xl font-bold">{project.role}</div>
+                </div>
               </div>
-            ))}
-          </div>
-        </aside>
+            </div>
 
-        <article className="lg:col-span-8 space-y-6">
-          <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid">// the_story</div>
-          {project.story.map((p, i) => (
-            <p key={i} className={i === 0 ? "text-2xl md:text-3xl font-display font-semibold leading-snug tracking-tight" : "text-lg text-muted-foreground leading-relaxed"}>
-              {p}
-            </p>
-          ))}
+            <div>
+              <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-4">// tech_stack</div>
+              <div className="flex flex-wrap gap-2">
+                {project.stack.map((s) => (
+                  <span key={s} className="font-mono text-[10px] px-3 py-1.5 border border-border bg-card uppercase tracking-wider">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-          <div className="pt-10 mt-10 border-t border-border flex flex-wrap gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 bg-acid text-primary-foreground px-6 py-3 font-mono text-sm uppercase tracking-widest hover:bg-acid-glow transition-all acid-glow"
-            >
-              talk about this
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/work/$slug"
-              params={{ slug: next.slug }}
-              className="inline-flex items-center gap-3 border border-border px-6 py-3 font-mono text-sm uppercase tracking-widest hover:border-acid hover:text-acid transition-colors"
-            >
-              next: {next.title}
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </article>
+            <div className="pt-8 border-t border-border">
+              <div className="font-mono text-[11px] uppercase tracking-widest text-acid mb-4">// performance</div>
+              <div className="grid grid-cols-2 gap-6">
+                {project.highlights.map((h) => (
+                  <div key={h.label}>
+                    <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">{h.label}</div>
+                    <div className="font-display font-bold text-xl text-acid mt-1">{h.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
+
+          {/* Detailed Content */}
+          <article className="lg:col-span-8 space-y-20">
+            {/* Overview Section */}
+            <div>
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-6">// overview</div>
+              <p className="text-2xl md:text-3xl font-display font-bold leading-tight tracking-tight">
+                {project.overview}
+              </p>
+            </div>
+
+            {/* Problem & Solution */}
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-4">
+                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">the_problem</div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {project.problem}
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="font-mono text-xs uppercase tracking-widest text-acid">the_solution</div>
+                <p className="text-foreground leading-relaxed font-medium">
+                  {project.solution}
+                </p>
+              </div>
+            </div>
+
+            {/* Visuals Placeholder */}
+            <div className="aspect-video bg-card border border-border relative group overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-br from-acid/10 to-transparent opacity-50" />
+               <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest border border-border px-4 py-2">
+                    project_media_placeholder.mp4
+                  </div>
+               </div>
+               <CircuitTraces />
+            </div>
+
+            {/* Full Story */}
+            <div className="space-y-8">
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid">// process_&_execution</div>
+              <div className="space-y-6">
+                {project.story.map((p, i) => (
+                  <p key={i} className="text-lg text-muted-foreground leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="pt-20 border-t border-border flex flex-col md:flex-row items-center justify-between gap-8">
+              <div>
+                <h4 className="font-display text-2xl font-bold mb-2">Impressed by this work?</h4>
+                <p className="text-muted-foreground">Let's talk about how I can bring this energy to your next project.</p>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-3 bg-acid text-primary-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-acid-glow transition-all acid-glow"
+                >
+                  start_conversation
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/work/$slug"
+                  params={{ slug: next.slug }}
+                  className="inline-flex items-center gap-3 border border-border px-8 py-4 font-mono text-sm uppercase tracking-widest hover:border-acid hover:text-acid transition-colors"
+                >
+                  next: {next.title}
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
 
       <SiteFooter />

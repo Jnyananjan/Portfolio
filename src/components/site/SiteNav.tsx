@@ -13,8 +13,8 @@ export function SiteNav() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-mono text-sm">
           <div className="w-2 h-2 rounded-full bg-acid acid-glow" />
-          <span className="text-foreground">builder</span>
-          <span className="text-muted-foreground">@home:~$</span>
+          <span className="text-foreground">jnyananjan</span>
+          <span className="text-muted-foreground">@root:~$</span>
           <span className="text-acid cursor-blink">_</span>
         </Link>
         <div className="hidden md:flex gap-8 font-mono text-xs uppercase tracking-widest text-muted-foreground">

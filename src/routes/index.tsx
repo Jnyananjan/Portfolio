@@ -6,13 +6,14 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CircuitTraces } from "@/components/site/CircuitTraces";
 import { PROJECTS } from "@/data/projects";
+import { TIMELINE, STACK } from "./about";
 import portrait from "@/assets/portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Builder.exe — Hardware. Startups. AI." },
-      { name: "description", content: "Portfolio of a maker — TechyPad macropad startup, a line-following robot, AI-built sites, BTech CSE AI/ML student." },
+      { title: "Jnyananjan — Hardware. Startups. AI." },
+      { name: "description", content: "Portfolio of a maker — TechyPad, Line-Following Robot, LED Watch, and Pizza Hut Web Menu." },
     ],
   }),
   component: Index,
@@ -54,7 +55,7 @@ function Hero() {
       <CircuitTraces />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" />
 
-      <motion.div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-32">
+      <motion.div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-40">
         <div className="grid lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
             <motion.div
@@ -108,18 +109,65 @@ function Hero() {
             initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
             className="lg:col-span-4"
           >
-            <div className="relative mb-5 border border-acid/30 overflow-hidden aspect-[4/5] bg-card">
-              <img
-                src={portrait}
-                alt="Portrait placeholder"
-                className="w-full h-full object-cover grayscale contrast-110 mix-blend-luminosity opacity-90"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-acid bg-background/60 px-2 py-0.5 border border-acid/30">
-                operator.jpg
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="relative mb-5 border border-acid/30 overflow-hidden aspect-[4/5] bg-card group"
+            >
+              {/* Glitch Animation for the Image */}
+              <motion.div
+                className="w-full h-full relative"
+                animate={{
+                  x: [0, -2, 2, -1, 0],
+                  y: [0, 1, -1, 0],
+                }}
+                transition={{
+                  duration: 0.2,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  repeatDelay: 5,
+                }}
+              >
+                <motion.img
+                  src={portrait}
+                  alt="Portrait"
+                  className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
+                  style={{
+                    maskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
+                    WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
+                  }}
+                />
+                
+                {/* Color Ghosting Effect on Hover */}
+                <motion.img
+                  src={portrait}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-30 mix-blend-screen translate-x-1"
+                  style={{
+                    filter: "hue-rotate(90deg) saturate(200%)",
+                    maskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
+                    WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
+                  }}
+                />
+              </motion.div>
+
+              {/* Advanced Scanline & Noise Overlay */}
+              <div className="absolute inset-0 opacity-30 pointer-events-none bg-noise mix-blend-overlay" />
+              <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 pointer-events-none" />
+              
+              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-acid bg-background/80 px-2 py-0.5 border border-acid/30 backdrop-blur-md">
+                operator_id: 0x4F2
               </div>
-            </div>
+              
+              {/* Animated Corner Brackets */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
+              
+              <div className="absolute bottom-4 left-4 right-4 h-px bg-acid/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-center" />
+            </motion.div>
             <div className="relative border border-acid/30 bg-card/60 backdrop-blur-sm p-5 scanline overflow-hidden">
               <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground mb-3 uppercase tracking-widest">
                 <span>terminal — boot.log</span>
@@ -131,7 +179,7 @@ function Hero() {
               </div>
               <BootSequence />
               <div className="mt-6 pt-4 border-t border-border/50 grid grid-cols-3 gap-3 font-mono text-[10px]">
-                <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">04+</div></div>
+                <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">+04</div></div>
                 <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">01</div></div>
                 <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
               </div>
@@ -147,11 +195,48 @@ function Marquee() {
   const items = ["HARDWARE", "★", "AI / ML", "★", "STARTUPS", "★", "ROBOTICS", "★", "PRODUCT", "★", "CODE", "★"];
   const repeated = [...items, ...items, ...items, ...items];
   return (
-    <div className="border-y border-border bg-acid text-primary-foreground py-4 overflow-hidden">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 2.5, duration: 1 }}
+      className="relative z-10 border-y border-border bg-acid text-primary-foreground py-4 overflow-hidden"
+    >
       <div className="flex animate-marquee whitespace-nowrap font-display font-extrabold text-3xl tracking-tight">
         {repeated.map((item, i) => <span key={i} className="mx-6">{item}</span>)}
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function TimelineSection() {
+  return (
+    <section className="px-6 py-32 border-y border-border bg-surface relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      <div className="max-w-7xl mx-auto relative">
+        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
+        <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-16">
+          the road <span className="italic text-muted-foreground/70">so far.</span>
+        </h2>
+        <div className="space-y-px bg-border border border-border overflow-hidden rounded-sm">
+          {TIMELINE.map((t, i) => (
+            <motion.div
+              key={t.title}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-background grid grid-cols-12 gap-4 p-8 hover:bg-acid/5 transition-all group"
+            >
+              <div className="col-span-3 md:col-span-2 font-mono text-xs uppercase tracking-widest text-acid/60 group-hover:text-acid pt-1 transition-colors">{t.year}</div>
+              <div className="col-span-9 md:col-span-10">
+                <div className="font-display text-2xl md:text-3xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-300">{t.title}</div>
+                <div className="text-muted-foreground mt-2 max-w-2xl leading-relaxed">{t.desc}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -177,39 +262,78 @@ function FeaturedWork() {
         </Link>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {PROJECTS.map((p, i) => (
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+        {PROJECTS.filter(p => p.featured).map((p, i) => (
           <motion.article
             key={p.slug}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="flex h-full"
           >
             <Link
               to="/work/$slug"
               params={{ slug: p.slug }}
-              className="block group relative border border-border bg-card overflow-hidden hover:border-acid/60 transition-all duration-500"
+              className="group relative border border-border bg-card overflow-hidden hover:border-acid/60 transition-all duration-500 flex flex-col w-full"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-acid/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative p-8 md:p-10">
+              <div className="relative p-8 md:p-10 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-12">
                   <span className="font-mono text-xs text-muted-foreground tracking-widest">[{p.n}] {p.tag}</span>
-                  <div className="w-12 h-12 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid transition-colors">
+                  <div className="w-12 h-12 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid transition-colors flex-shrink-0">
                     <p.icon className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-4 group-hover:text-acid transition-colors">
-                  {p.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed max-w-md">{p.blurb}</p>
-                <div className="mt-8 pt-6 border-t border-border/60 flex items-center justify-between font-mono text-xs">
-                  <span className="text-muted-foreground uppercase tracking-widest">read_more</span>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-acid group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                
+                <div className="flex-1">
+                  <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-4 group-hover:text-acid transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed max-w-md">{p.blurb}</p>
+                </div>
+
+                <div className="mt-12 pt-6 border-t border-border/60 flex items-center justify-between">
+                  <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-acid border border-acid/20 px-3 py-1.5 group-hover:bg-acid group-hover:text-primary-foreground transition-all">
+                    view_case_study
+                    <ArrowUpRight className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">[{p.year}]</span>
                 </div>
               </div>
             </Link>
           </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ToolkitSection() {
+  return (
+    <section className="px-6 py-32 max-w-7xl mx-auto">
+      <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// toolkit</div>
+      <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter mb-16">
+        the <span className="italic text-muted-foreground/70">toolkit.</span>
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border border border-border overflow-hidden rounded-sm">
+        {STACK.map((s, i) => (
+          <motion.div
+            key={s.name}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
+            className="bg-background p-10 flex flex-col items-start gap-6 hover:bg-acid hover:text-primary-foreground transition-all duration-500 group cursor-default"
+          >
+            <s.icon className="w-8 h-8 text-acid group-hover:text-primary-foreground transition-colors duration-500" />
+            <div>
+              <div className="font-mono text-[10px] text-muted-foreground group-hover:text-primary-foreground/70 uppercase tracking-widest">
+                /{String(i + 1).padStart(2, "0")}
+              </div>
+              <div className="font-display font-bold text-2xl tracking-tight mt-1">{s.name}</div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -252,6 +376,8 @@ function Index() {
       <Hero />
       <Marquee />
       <FeaturedWork />
+      <TimelineSection />
+      <ToolkitSection />
       <ContactCTA />
       <SiteFooter />
     </main>

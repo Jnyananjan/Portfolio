@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-wrap items-center justify-between gap-6 font-mono text-xs text-muted-foreground">
-        <div>© builder.exe — running on caffeine & curiosity.</div>
+        <div>© Jnyananjan — running on caffeine & curiosity.</div>
         <div className="flex gap-6">
           <Link to="/contact" className="hover:text-acid flex items-center gap-2">
             <Mail className="w-4 h-4" /> contact

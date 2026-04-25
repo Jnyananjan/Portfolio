@@ -9,9 +9,9 @@ import { CircuitTraces } from "@/components/site/CircuitTraces";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Builder.exe" },
+      { title: "Contact — Jnyananjan" },
       { name: "description", content: "Send a transmission. Collabs, hardware projects, AI experiments — the inbox is always open." },
-      { property: "og:title", content: "Contact — Builder.exe" },
+      { property: "og:title", content: "Contact — Jnyananjan" },
       { property: "og:description", content: "Send a transmission. Collabs, hardware projects, AI experiments." },
     ],
   }),
