@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -34,7 +33,7 @@ function WorkPage() {
 
       <section className="px-6 pb-32 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch border-t border-border pt-12">
-          {PROJECTS.map((p, i) => (
+          {PROJECTS.map((p) => (
             <div
               key={p.slug}
               className="flex h-full"
@@ -54,9 +53,17 @@ function WorkPage() {
                   </div>
                   
                   <div className="flex-1">
-                    <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4 group-hover:text-acid transition-colors">
-                      {p.title}
-                    </h3>
+                    <div className="flex items-center gap-2 mb-4">
+                      <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight group-hover:text-acid transition-colors">
+                        {p.title}
+                      </h3>
+                      {p.badge && (
+                        <div className="px-1.5 py-0.5 bg-acid/10 border border-acid/20 text-acid font-mono text-[8px] uppercase tracking-tighter rounded flex items-center gap-1">
+                           <span className="w-1 h-1 rounded-full bg-acid animate-pulse" />
+                           {p.badge.split(' ').pop()}
+                        </div>
+                      )}
+                    </div>
                     <p className="text-muted-foreground text-sm leading-relaxed max-w-md line-clamp-3">{p.blurb}</p>
                   </div>
 

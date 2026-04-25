@@ -246,9 +246,17 @@ function FeaturedWork() {
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-4 group-hover:text-acid transition-colors">
-                    {p.title}
-                  </h3>
+                  <div className="flex items-center gap-2 mb-4">
+                    <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
+                      {p.title}
+                    </h3>
+                    {p.badge && (
+                      <div className="px-2 py-0.5 bg-acid/10 border border-acid/20 text-acid font-mono text-[9px] uppercase tracking-widest rounded flex items-center gap-1.5">
+                         <span className="w-1.5 h-1.5 rounded-full bg-acid animate-pulse" />
+                         {p.badge.split(' ').pop()}
+                      </div>
+                    )}
+                  </div>
                   <p className="text-muted-foreground leading-relaxed max-w-md">{p.blurb}</p>
                 </div>
 
