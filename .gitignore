@@ -32,3 +32,8 @@ dist-ssr
 # System files
 Thumbs.db
 db.json
+
+# Environment variables
+.env
+.env.local
+.env.*

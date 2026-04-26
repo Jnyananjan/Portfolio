@@ -125,14 +125,14 @@ function ContactPage() {
             <Field label="01 / name">
               <input
                 type="text" value={form.name} onChange={update("name")}
-                placeholder="Your Beautiful Name" required
+                placeholder="Your Full Name" required
                 className="w-full bg-transparent border-0 border-b border-border focus:border-acid outline-none py-2 font-mono text-sm placeholder:text-muted-foreground/50"
               />
             </Field>
             <Field label="02 / email">
               <input
                 type="email" value={form.email} onChange={update("email")}
-                placeholder="Your Email To Chat Late Night" required
+                placeholder="Your Email" required
                 className="w-full bg-transparent border-0 border-b border-border focus:border-acid outline-none py-2 font-mono text-sm placeholder:text-muted-foreground/50"
               />
             </Field>

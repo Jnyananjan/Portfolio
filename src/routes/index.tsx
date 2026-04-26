@@ -173,9 +173,37 @@ function Marquee() {
 }
 
 
-function FeaturedWork() {
+function ProjectSkeleton() {
   return (
-    <section className="relative py-32 px-6 max-w-7xl mx-auto">
+    <div className="border border-border bg-card overflow-hidden flex flex-col w-full h-full animate-pulse">
+      <div className="relative p-8 md:p-10 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-12">
+          <div className="h-3 w-24 bg-muted rounded" />
+          <div className="w-12 h-12 border border-border bg-muted" />
+        </div>
+        <div className="flex-1">
+          <div className="h-10 w-48 bg-muted rounded mb-4" />
+          <div className="space-y-2">
+            <div className="h-4 w-full bg-muted rounded" />
+            <div className="h-4 w-2/3 bg-muted rounded" />
+          </div>
+        </div>
+        <div className="mt-12 pt-6 border-t border-border/60 flex items-center justify-between">
+          <div className="h-8 w-32 bg-muted rounded" />
+          <div className="h-3 w-12 bg-muted rounded" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeaturedWork() {
+  const [isLoading, setIsLoading] = useState(false); // Set to true to test skeleton
+  const featuredSlugs = ["techypad", "line-following-robot", "pizzahut-menu", "cricket-score"];
+  const featuredProjects = PROJECTS.filter((p) => featuredSlugs.includes(p.slug));
+
+  return (
+    <section className="relative py-32 px-6 max-w-6xl mx-auto">
       <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
         <div>
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">
@@ -195,52 +223,134 @@ function FeaturedWork() {
         </Link>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-stretch">
-        {PROJECTS.filter(p => p.featured).map((p, i) => (
-          <article
-            key={p.slug}
-            className="flex h-full"
-          >
-            <Link
-              to="/work/$slug"
-              params={{ slug: p.slug }}
-              className="group relative border border-border bg-card overflow-hidden hover:border-acid/60 transition-all duration-500 flex flex-col w-full"
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-5xl mx-auto">
+        {isLoading ? (
+          Array(4).fill(0).map((_, i) => <ProjectSkeleton key={i} />)
+        ) : (
+          featuredProjects.map((p) => (
+            <article
+              key={p.slug}
+              className="flex h-full"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-acid/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative p-8 md:p-10 flex flex-col h-full">
-                <div className="flex items-start justify-between mb-12">
-                  <span className="font-mono text-xs text-muted-foreground tracking-widest">[{p.n}] {p.tag}</span>
-                  <div className="w-12 h-12 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid transition-colors flex-shrink-0">
-                    <p.icon className="w-5 h-5" />
+              <Link
+                to="/work/$slug"
+                params={{ slug: p.slug }}
+                className="group relative border border-border bg-card overflow-hidden hover:border-acid transition-all duration-300 flex flex-col w-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-acid/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative p-8 md:p-10 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-12">
+                    <span className="font-mono text-xs text-muted-foreground tracking-widest">[{p.n}] {p.tag}</span>
+                    <div className="w-12 h-12 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid transition-colors flex-shrink-0">
+                      <p.icon className="w-5 h-5" />
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-4">
-                    <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
-                      {p.title}
-                    </h3>
-                    {p.badge && (
-                      <div className="px-2 py-0.5 bg-acid/10 border border-acid/20 text-acid font-mono text-[9px] uppercase tracking-widest rounded flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-acid animate-pulse" />
-                        {p.badge.split(' ').pop()}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-4">
+                      <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
+                        {p.title}
+                      </h3>
+                    </div>
+                    <div className="space-y-6">
+                      <p className="text-muted-foreground leading-relaxed max-w-md">
+                        {p.blurb}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {p.stack.slice(0, 3).map((tech) => (
+                          <span key={tech} className="px-2 py-1 bg-acid/5 border border-acid/10 text-acid/70 font-mono text-[9px] uppercase tracking-widest rounded">
+                            {tech}
+                          </span>
+                        ))}
                       </div>
-                    )}
+                    </div>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed max-w-md">{p.blurb}</p>
-                </div>
 
-                <div className="mt-12 pt-6 border-t border-border/60 flex items-center justify-between">
-                  <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-acid border border-acid/20 px-3 py-1.5 group-hover:bg-acid group-hover:text-primary-foreground transition-all">
-                    view_case_study
-                    <ArrowUpRight className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <div className="mt-12 pt-6 border-t border-border/60 flex items-center justify-between">
+                    <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-acid border border-acid/20 px-3 py-1.5 group-hover:bg-acid group-hover:text-primary-foreground transition-all">
+                      view_case_study
+                      <ArrowUpRight className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                    </div>
+                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">[{p.year.split(' ')[0]}]</span>
                   </div>
-                  <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">[{p.year}]</span>
+                </div>
+              </Link>
+            </article>
+          ))
+        )}
+      </div>
+    </section>
+  );
+}
+
+function WhyMeSection() {
+  const points = [
+    { title: "I build both hardware and software systems", icon: CircuitBoard },
+    { title: "I take ideas from concept to real product", icon: Zap },
+    { title: "I focus on performance, not just visuals", icon: Cpu },
+    { title: "I design for real-world usage", icon: Bot },
+  ];
+
+  return (
+    <section className="px-6 py-32 border-y border-border bg-surface relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// why_me.log</div>
+            <h2 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-none">
+              casual but<br />
+              <span className="italic text-acid text-glow">confident.</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-12">
+              I don't just write code. I solder circuits, tune PID loops, and build systems that live in the real world.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 p-4 border border-border bg-background/50 backdrop-blur-sm group hover:border-acid transition-colors">
+                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Availability</div>
+                  <div className="font-display font-bold text-lg">Response time: &lt;24 hours</div>
                 </div>
               </div>
-            </Link>
-          </article>
-        ))}
+              <div className="flex items-center gap-4 p-4 border border-border bg-background/50 backdrop-blur-sm group hover:border-acid transition-colors">
+                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Opportunities</div>
+                  <div className="font-display font-bold text-lg">Open to internships & collaborations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-6">
+            {points.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative p-8 border border-border bg-card hover:border-acid/60 transition-all"
+              >
+                <div className="flex items-center gap-6">
+                  <div className="font-mono text-2xl text-muted-foreground/30 group-hover:text-acid/40 transition-colors">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight group-hover:text-acid transition-colors leading-tight">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-transparent group-hover:border-acid/40 transition-all" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-transparent group-hover:border-acid/40 transition-all" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -330,6 +440,7 @@ function Index() {
       <FeaturedWork />
       <TimelineSection />
       <ToolkitSection />
+      <WhyMeSection />
       <ContactCTA />
       <SiteFooter />
     </main>

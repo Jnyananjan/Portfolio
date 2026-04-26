@@ -13,9 +13,7 @@ export function SiteFooter() {
           <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-acid flex items-center gap-2">
             <Github className="w-4 h-4" /> github
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-acid flex items-center gap-2">
-            <Linkedin className="w-4 h-4" /> linkedin
-          </a>
+
         </div>
       </div>
     </footer>

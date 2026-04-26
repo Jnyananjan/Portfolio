@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Play, ExternalLink, Globe } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Play, ExternalLink, Globe, Github } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CircuitTraces } from "@/components/site/CircuitTraces";
@@ -102,7 +102,7 @@ function ProjectPage() {
                       "/projects/linkhub-hero.png"
                     } 
                     alt={project.title} 
-                    className={`w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 ${project.slug === 'led-watch' ? 'object-contain scale-90' : ''}`}
+                    className={`w-full h-auto transition-all duration-700 ${project.slug === 'led-watch' ? 'object-contain scale-90' : ''}`}
                    />
                    {project.slug === 'led-watch' && (
                      <div className="absolute inset-0 rounded-full border-2 border-acid/20 animate-pulse pointer-events-none" />
@@ -167,17 +167,30 @@ function ProjectPage() {
                 </p>
               </div>
 
-              {project.websiteUrl && (
-                <a
-                  href={project.websiteUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex items-center gap-3 bg-acid text-primary-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-acid-glow transition-all acid-glow w-full sm:w-auto"
-                >
-                  {project.slug === 'link-hub' ? 'Visit Live Hub' : project.tag.includes('REAL-TIME') ? 'View Live Dashboard' : project.tag.includes('WEB') ? 'View Live Website' : 'Visit Official Website'}
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
-              )}
+              <div className="flex flex-wrap gap-4">
+                {project.websiteUrl && (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center gap-3 bg-acid text-primary-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-acid-glow transition-all acid-glow w-full sm:w-auto"
+                  >
+                    {project.slug === 'link-hub' ? 'Visit Live Hub' : project.tag.includes('REAL-TIME') ? 'View Live Dashboard' : project.tag.includes('WEB') ? 'View Live Website' : 'Visit Official Website'}
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center gap-3 border border-border bg-card text-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:border-acid transition-all w-full sm:w-auto"
+                  >
+                    View work on GitHub
+                    <Github className="w-4 h-4 group-hover:text-acid transition-colors" />
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* Engineering Challenge Section */}
@@ -254,17 +267,17 @@ function ProjectPage() {
                 <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid">
                   {project.tag.includes('WEB') ? '// interface_showcase' : '// product_gallery'}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className={project.slug === 'techypad' ? "grid grid-cols-1 sm:grid-cols-2 gap-6" : "flex flex-col gap-12"}>
                   {project.gallery.map((img, i) => (
                     <div
                       key={i}
                       className="group relative border border-border bg-card overflow-hidden"
                     >
-                      <div className="absolute inset-0 bg-acid/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
+                      <div className="absolute inset-0 bg-acid/5 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
                       <img
                         src={img.url}
                         alt={img.caption}
-                        className="w-full aspect-square object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                        className={`w-full ${project.slug === 'techypad' ? 'aspect-square object-cover' : 'h-auto'} transition-all duration-700`}
                         loading="lazy"
                       />
                       <div className="absolute bottom-4 left-4 z-20 font-mono text-[10px] uppercase tracking-widest bg-background/80 px-2 py-1 border border-border backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
@@ -292,97 +305,6 @@ function ProjectPage() {
               </div>
             </div>
 
-            {/* Media Section Upgrade */}
-            <div className="space-y-6">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid">// feature_demo</div>
-              <div className={`aspect-video bg-card border border-border relative group overflow-hidden cursor-pointer ${project.tag.includes('WEB') ? 'p-4' : ''}`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-acid/20 to-transparent opacity-50 z-10" />
-                
-                {project.tag.includes('WEB') && (
-                  <div className="absolute top-0 left-0 w-full h-8 bg-surface border-b border-border z-40 flex items-center px-4 gap-2">
-                    <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-border" />
-                    </div>
-                    <div className="flex-1 bg-background/50 rounded h-5 flex items-center px-3 font-mono text-[8px] text-muted-foreground">
-                      https://{project.slug}.dev
-                    </div>
-                  </div>
-                )}
-
-                {project.slug === "techypad" ? (
-                  <img 
-                    src="/projects/techypad-lifestyle.png" 
-                    alt="Demo Preview" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-                  />
-                ) : project.slug === "line-following-robot" ? (
-                  <img 
-                    src="/projects/robot-track.png" 
-                    alt="Track Test" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-                  />
-                ) : project.slug === "led-watch" ? (
-                  <img 
-                    src="/projects/watch-hero.png" 
-                    alt="Watch Demo" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-                  />
-                ) : project.slug === "pizzahut-menu" ? (
-                  <img 
-                    src="/projects/pizzahut-hero.png" 
-                    alt="Pizza Hut UI Demo" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-                  />
-                ) : project.slug === "cricket-score" ? (
-                   <img 
-                    src="/projects/cricket-hero.png" 
-                    alt="Cricket Live Demo" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest border border-border px-4 py-2">
-                      project_media_placeholder.mp4
-                    </div>
-                  </div>
-                )}
-                
-                {project.slug === 'cricket-score' && (
-                  <div className="absolute bottom-6 left-6 z-40 font-mono text-[9px] text-acid bg-background/90 p-4 border border-acid/20 backdrop-blur-sm max-w-[200px] hidden md:block">
-                    <div className="flex items-center gap-2 mb-2 text-[8px] text-muted-foreground uppercase">
-                      <span className="w-1.5 h-1.5 rounded-full bg-acid animate-ping" />
-                      Live Stream log
-                    </div>
-                    <div className="space-y-1 opacity-80">
-                      <div>[09:41:22] BALL_SYNC: SUCCESS</div>
-                      <div>[09:41:22] DB_BROADCAST: OK</div>
-                      <div>[09:41:23] LATENCY: 84ms</div>
-                      <div className="text-white">[09:41:24] 4 RUNS SCORED!</div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="absolute inset-0 flex items-center justify-center z-30">
-                  <div className="w-20 h-20 rounded-full bg-background/40 backdrop-blur-md border border-acid/40 flex items-center justify-center group-hover:scale-110 group-hover:bg-acid/20 transition-all duration-500">
-                    <Play className="w-8 h-8 text-acid fill-acid" />
-                  </div>
-                </div>
-
-                <div className="absolute inset-0 scanline opacity-30 pointer-events-none" />
-                <CircuitTraces />
-              </div>
-              <p className="text-xs font-mono text-muted-foreground text-center italic tracking-widest">
-                {
-                  project.slug === "line-following-robot" ? "[Real-time High-Speed Track Test]" : 
-                  project.slug === "led-watch" ? "[Real-Time LED Animation Engine]" :
-                  project.slug === "pizzahut-menu" ? "[High-Fidelity UI Interaction Demo]" :
-                  project.slug === "cricket-score" ? "[Sub-Second Real-Time Data Streaming]" :
-                  "[click_to_play_transmission.exe]"
-                }
-              </p>
-            </div>
 
             {/* Full Story */}
             <div className="space-y-8">
@@ -412,6 +334,17 @@ function ProjectPage() {
                   >
                     Official Site
                     <Globe className="w-4 h-4" />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-3 border border-border text-foreground px-8 py-4 font-mono text-sm uppercase tracking-widest hover:border-acid transition-all w-full sm:w-auto"
+                  >
+                    GitHub Repo
+                    <Github className="w-4 h-4" />
                   </a>
                 )}
                 <Link
