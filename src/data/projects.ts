@@ -43,14 +43,11 @@ export const PROJECTS: Project[] = [
     subBadge: "ESP32-S3 Powered • Hotswap • Custom firmware",
     websiteUrl: "https://techypad.in/",
     gallery: [
-      { url: "https://i.ibb.co/CDR3QHH/6300548957326741567.jpg", caption: "Development v1" },
-      { url: "https://i.ibb.co/svmrQckF/6300548957326741568.jpg", caption: "Development v2" },
-      { url: "https://i.ibb.co/KxMqySMW/6300548957326741569.jpg", caption: "Hardware v3" },
-      { url: "https://i.ibb.co/Fk3YtySv/6300548957326741570.jpg", caption: "Assembly v4" },
       { url: "https://i.ibb.co/4nMRrsn9/6300548957326741571.jpg", caption: "Production v5" },
-      { url: "https://i.ibb.co/gLGY2Jk9/6300548957326741572.jpg", caption: "Final Polish" },
-      { url: "https://i.ibb.co/q3TftSpX/6300548957326741573.jpg", caption: "PCB Layout" },
-      { url: "https://i.ibb.co/F4zwfWTZ/6300548957326741574.jpg", caption: "Circuit Detail" },
+      { url: "https://i.ibb.co/svmrQckF/6300548957326741568.jpg", caption: "Development v2" },
+      { url: "https://i.ibb.co/KxMqySMW/6300548957326741569.jpg", caption: "Hardware v2" },
+      { url: "https://i.ibb.co/q3TftSpX/6300548957326741573.jpg", caption: "PCB & Firmware" },
+
     ],
     overview: "TechyPad is a professional-grade, programmable macropad designed to streamline creative and development workflows. It bridges the gap between high-end custom keyboards and accessible productivity tools.",
     problem: "Creators often find themselves repeating complex keyboard shortcuts or menu navigations. Existing solutions were either too expensive, lacked customization, or required proprietary software that felt bloated.",
@@ -219,7 +216,7 @@ export const PROJECTS: Project[] = [
     websiteUrl: "https://jnyananjan.github.io/links_hub/",
     githubUrl: "https://github.com/Jnyananjan/links_hub",
     gallery: [
-      { url: "https://i.ibb.co/39ZfJVBV/Janaa.png", caption: "Janaa" },
+      { url: "https://i.ibb.co/39ZfJVBV/Janaa.png", caption: "Jana" },
     ],
     overview: "A high-performance, dynamic personal link management system designed to consolidate my entire digital ecosystem into a single, high-fidelity entry point.",
     problem: "Sharing multiple project links and social profiles often leads to a disjointed user experience and friction in discovery. I needed a central 'routing layer' that was as fast as it was beautiful.",

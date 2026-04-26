@@ -15,11 +15,11 @@ export const Route = createFileRoute("/work/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.project.title} — Jnyananjan` },
-          { name: "description", content: loaderData.project.blurb },
-          { property: "og:title", content: `${loaderData.project.title} — Jnyananjan` },
-          { property: "og:description", content: loaderData.project.blurb },
-        ]
+        { title: `${loaderData.project.title} — Jnyananjan` },
+        { name: "description", content: loaderData.project.blurb },
+        { property: "og:title", content: `${loaderData.project.title} — Jnyananjan` },
+        { property: "og:description", content: loaderData.project.blurb },
+      ]
       : [{ title: "Project — Jnyananjan" }],
   }),
   notFoundComponent: () => (
@@ -82,31 +82,31 @@ function ProjectPage() {
                 </div>
               )}
             </div>
-                 <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-6">
+            <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-6">
               <div className="w-20 h-20 border border-acid/40 flex items-center justify-center text-acid acid-glow">
                 <Icon className="w-9 h-9" />
               </div>
               {(project.slug === "techypad" || project.slug === "line-following-robot" || project.slug === "led-watch" || project.slug === "pizzahut-menu" || project.slug === "cricket-score" || project.slug === "link-hub") && (
-                <div className={`relative w-full max-w-sm lg:w-64 border border-border bg-card p-2 ${project.slug === 'led-watch' ? 'rounded-full aspect-square' : project.slug === 'cricket-score' || project.slug === 'link-hub' ? 'rounded-sm border-t-[12px] border-x-4 border-b-8 border-muted' : 'rounded-lg rotate-3'} hover:rotate-0 transition-transform duration-500 shadow-2xl shadow-acid/5 overflow-hidden group flex items-center justify-center`}>
-                   {(project.slug === 'cricket-score' || project.slug === 'link-hub') && (
-                     <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 w-12 h-1 bg-border/20 rounded-full z-50" />
-                   )}
-                   <div className="absolute inset-0 bg-acid/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                   <img 
+                <div className={`relative w-full max-w-sm lg:w-64 border border-border bg-card p-2 ${project.slug === 'led-watch' ? 'rounded-full aspect-square' : project.slug === 'techypad' ? 'rounded-lg rotate-3 aspect-square' : project.slug === 'cricket-score' || project.slug === 'link-hub' ? 'rounded-sm border-t-[12px] border-x-4 border-b-8 border-muted' : 'rounded-lg rotate-3'} hover:rotate-0 transition-transform duration-500 shadow-2xl shadow-acid/5 overflow-hidden group flex items-center justify-center`}>
+                  {(project.slug === 'cricket-score' || project.slug === 'link-hub') && (
+                    <div className="absolute top-[-8px] left-1/2 -translate-x-1/2 w-12 h-1 bg-border/20 rounded-full z-50" />
+                  )}
+                  <div className="absolute inset-0 bg-acid/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  <img
                     src={
-                      project.slug === "techypad" ? "/projects/techypad-hero.png" : 
-                      project.slug === "line-following-robot" ? "/projects/robot-hero.png" :
-                      project.slug === "led-watch" ? "/projects/watch-hero.png" :
-                      project.slug === "pizzahut-menu" ? "/projects/pizzahut-hero.png" :
-                      project.slug === "cricket-score" ? "/projects/cricket-hero.png" :
-                      "/projects/linkhub-hero.png"
-                    } 
-                    alt={project.title} 
-                    className={`w-full h-auto transition-all duration-700 ${project.slug === 'led-watch' ? 'object-contain scale-90' : ''}`}
-                   />
-                   {project.slug === 'led-watch' && (
-                     <div className="absolute inset-0 rounded-full border-2 border-acid/20 animate-pulse pointer-events-none" />
-                   )}
+                      project.slug === "techypad" ? "https://i.ibb.co/Q7pCD8Fb/6300548957326741603.jpg" :
+                        project.slug === "line-following-robot" ? "/projects/robot-hero.png" :
+                          project.slug === "led-watch" ? "/projects/watch-hero.png" :
+                            project.slug === "pizzahut-menu" ? "https://i.ibb.co/RTMbzMsy/sssssssssss.png" :
+                              project.slug === "cricket-score" ? "https://i.ibb.co/3m2PPF9x/screenshot-1777220121690.png" :
+                                "https://i.ibb.co/39ZfJVBV/Janaa.png"
+                    }
+                    alt={project.title}
+                    className={`transition-all duration-700 ${project.slug === 'led-watch' ? 'w-full h-auto object-contain scale-90' : project.slug === 'techypad' ? 'w-full h-full object-cover' : 'w-full h-auto'}`}
+                  />
+                  {project.slug === 'led-watch' && (
+                    <div className="absolute inset-0 rounded-full border-2 border-acid/20 animate-pulse pointer-events-none" />
+                  )}
                 </div>
               )}
             </div>
