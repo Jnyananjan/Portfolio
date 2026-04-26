@@ -84,14 +84,14 @@ function ContactPage() {
               <Mail className="w-4 h-4 text-acid mt-1" />
               <div>
                 <div className="text-muted-foreground text-[11px] uppercase tracking-widest">email</div>
-                <a href="mailto:hello@jnyananjan.com" className="hover:text-acid">hello@jnyananjan.com</a>
+                <a href="mailto:jnyananjansarkar01@gmail.com" className="hover:text-acid">jnyananjansarkar01@gmail.com</a>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-acid mt-1" />
               <div>
                 <div className="text-muted-foreground text-[11px] uppercase tracking-widest">based in</div>
-                <div>India · UTC+5:30</div>
+                <div>West Bengal, India · UTC+5:30</div>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -101,13 +101,7 @@ function ContactPage() {
                 <a href="https://github.com/jnyananjan" target="_blank" rel="noreferrer" className="hover:text-acid">@jnyananjan</a>
               </div>
             </div>
-            <div className="flex items-start gap-3">
-              <Linkedin className="w-4 h-4 text-acid mt-1" />
-              <div>
-                <div className="text-muted-foreground text-[11px] uppercase tracking-widest">linkedin</div>
-                <a href="https://linkedin.com/in/jnyananjan" target="_blank" rel="noreferrer" className="hover:text-acid">/in/jnyananjan</a>
-              </div>
-            </div>
+
           </div>
 
           <div className="pt-6 border-t border-border font-mono text-xs text-muted-foreground">
@@ -131,14 +125,14 @@ function ContactPage() {
             <Field label="01 / name">
               <input
                 type="text" value={form.name} onChange={update("name")}
-                placeholder="ada lovelace" required
+                placeholder="Your Beautiful Name" required
                 className="w-full bg-transparent border-0 border-b border-border focus:border-acid outline-none py-2 font-mono text-sm placeholder:text-muted-foreground/50"
               />
             </Field>
             <Field label="02 / email">
               <input
                 type="email" value={form.email} onChange={update("email")}
-                placeholder="ada@analytical.engine" required
+                placeholder="Your Email To Chat Late Night" required
                 className="w-full bg-transparent border-0 border-b border-border focus:border-acid outline-none py-2 font-mono text-sm placeholder:text-muted-foreground/50"
               />
             </Field>

@@ -148,7 +148,7 @@ function Hero() {
               </div>
               <BootSequence />
               <div className="mt-6 pt-4 border-t border-border/50 grid grid-cols-3 gap-3 font-mono text-[10px]">
-                <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">+04</div></div>
+                <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">+06</div></div>
                 <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">01</div></div>
                 <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
               </div>
@@ -182,8 +182,8 @@ function FeaturedWork() {
             // section_02 — selected_work
           </div>
           <h2 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter leading-none">
-            things i've<br />
-            <span className="italic text-muted-foreground/70">built.</span>
+            systems i've<br />
+            <span className="italic text-muted-foreground/70">shipped.</span>
           </h2>
         </div>
         <Link
@@ -250,7 +250,7 @@ function TimelineSection() {
   return (
     <section className="px-6 py-20 border-y border-border bg-surface">
       <div className="max-w-7xl mx-auto">
-        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
+        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// archive.log</div>
         <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">the road so far.</h2>
         <div className="space-y-px bg-border border border-border">
           {ABOUT_TIMELINE.map((t) => (

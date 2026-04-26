@@ -82,44 +82,6 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20 border-y border-border bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// timeline.log</div>
-          <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">the road so far.</h2>
-          <div className="space-y-px bg-border border border-border">
-            {ABOUT_TIMELINE.map((t) => (
-              <div key={t.title} className="bg-background grid grid-cols-12 gap-4 p-6 hover:bg-acid/5 transition-colors">
-                <div className="col-span-3 md:col-span-2 font-mono text-xs uppercase tracking-widest text-acid pt-1">{t.year}</div>
-                <div className="col-span-9 md:col-span-10">
-                  <div className="font-display text-2xl font-bold tracking-tight">{t.title}</div>
-                  <div className="text-muted-foreground mt-1">{t.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20 max-w-7xl mx-auto">
-        <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// toolkit</div>
-        <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">
-          the <span className="italic text-muted-foreground/70">toolkit.</span>
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border border border-border">
-          {ABOUT_STACK.map((s, i) => (
-            <div key={s.name} className="bg-background p-8 flex flex-col items-start gap-4 hover:bg-acid hover:text-primary-foreground transition-all duration-300 group cursor-default">
-              <s.icon className="w-7 h-7 text-acid group-hover:text-primary-foreground transition-colors" />
-              <div>
-                <div className="font-mono text-[10px] text-muted-foreground group-hover:text-primary-foreground/70 uppercase tracking-widest">
-                  /{String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="font-display font-bold text-xl tracking-tight mt-1">{s.name}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="px-6 pb-32 max-w-7xl mx-auto">
         <Link
           to="/contact"
