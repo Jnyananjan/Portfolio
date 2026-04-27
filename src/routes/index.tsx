@@ -52,14 +52,38 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden grid-bg">
+    <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden bg-background">
       <CircuitTraces />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" />
 
-      <div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-40">
+      {/* Merged Background Image */}
+      <motion.div
+        style={{ y, opacity }}
+        className="absolute inset-0 pointer-events-none flex justify-end"
+      >
+        <div className="relative w-full h-full lg:w-[70%]">
+          <img
+            src={portrait}
+            alt="Portrait background"
+            className="w-full h-full object-cover object-center grayscale contrast-[1.2] opacity-[0.25] mix-blend-screen"
+            style={{
+              maskImage: "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 80%, transparent)",
+            }}
+          />
+          {/* Advanced Scanline & Noise Overlay */}
+          <div className="absolute inset-0 opacity-40 pointer-events-none bg-noise mix-blend-overlay" />
+          <div className="absolute inset-0 opacity-30 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+        </div>
+      </motion.div>
+
+      {/* Fade out towards the bottom and left */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent pointer-events-none lg:w-[50%]" />
+
+      <div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 w-full pt-32 pb-40 z-10">
         <div className="grid lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-acid/40 bg-acid/5 font-mono text-[11px] uppercase tracking-[0.2em] text-acid mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-acid/40 bg-background/60 backdrop-blur-md font-mono text-[11px] uppercase tracking-[0.2em] text-acid mb-8">
               <Sparkles className="w-3 h-3" />
               v1.0 — portfolio.live
             </div>
@@ -67,11 +91,11 @@ function Hero() {
             <h1 className="font-display text-[13vw] sm:text-[10vw] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] font-extrabold tracking-tighter">
               I BUILD<br />
               <span className="text-acid text-glow italic">things</span><br />
-              <span className="text-muted-foreground/60">that think.</span>
+              <span className="text-muted-foreground/80">that think.</span>
             </h1>
 
             <div className="mt-10 max-w-xl">
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg text-foreground/90 leading-relaxed font-medium bg-background/40 backdrop-blur-sm p-4 rounded-xl border border-border/50">
                 Hardware, startups, and software stitched together with curiosity.
                 BTech CSE — AI/ML student turning ideas into circuits, products, and code.
               </p>
@@ -87,7 +111,7 @@ function Hero() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 border border-border px-6 py-3 font-mono text-sm uppercase tracking-widest hover:border-acid hover:text-acid transition-colors"
+                className="inline-flex items-center gap-3 border border-border px-6 py-3 font-mono text-sm uppercase tracking-widest hover:border-acid hover:text-acid transition-colors bg-background/50 backdrop-blur-md"
               >
                 contact.txt
               </Link>
@@ -95,49 +119,7 @@ function Hero() {
           </div>
 
           <div className="lg:col-span-4">
-            <div className="relative mb-5 border border-acid/30 overflow-hidden aspect-[4/5] bg-card group">
-              {/* Glitch Animation for the Image */}
-              <div className="w-full h-full relative">
-                <img
-                  src={portrait}
-                  alt="Portrait"
-                  className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
-                  style={{
-                    maskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
-                    WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
-                  }}
-                />
-
-                {/* Color Ghosting Effect on Hover */}
-                <img
-                  src={portrait}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-30 mix-blend-screen translate-x-1"
-                  style={{
-                    filter: "hue-rotate(90deg) saturate(200%)",
-                    maskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
-                    WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 85%)",
-                  }}
-                />
-              </div>
-
-              {/* Advanced Scanline & Noise Overlay */}
-              <div className="absolute inset-0 opacity-30 pointer-events-none bg-noise mix-blend-overlay" />
-              <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 pointer-events-none" />
-
-              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-acid bg-background/80 px-2 py-0.5 border border-acid/30 backdrop-blur-md">
-                operator_id: 0x4F2
-              </div>
-
-              {/* Animated Corner Brackets */}
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2 group-hover:border-acid transition-colors" />
-
-              <div className="absolute bottom-4 left-4 right-4 h-px bg-acid/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-center" />
-            </div>
-            <div className="relative border border-acid/30 bg-card/60 backdrop-blur-sm p-5 scanline overflow-hidden">
+            <div className="relative border border-acid/30 bg-background/70 backdrop-blur-xl p-5 scanline overflow-hidden shadow-2xl">
               <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground mb-3 uppercase tracking-widest">
                 <span>terminal — boot.log</span>
                 <div className="flex gap-1">
@@ -152,6 +134,9 @@ function Hero() {
                 <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">01</div></div>
                 <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
               </div>
+              {/* Animated Corner Brackets */}
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-acid/40 m-2" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2" />
             </div>
           </div>
         </div>
