@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Jnyananjan — Hardware. Startups. AI." },
-      { name: "description", content: "Portfolio of a maker — TechyPad, Line-Following Robot, LED Watch, and Pizza Hut Web Menu." },
+      { name: "description", content: "Portfolio of a maker — TechyPad, Line-Following Robot, LED Watch, and Pizza Hut & Kitchen Web Menu." },
     ],
   }),
   component: Index,
