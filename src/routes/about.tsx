@@ -19,11 +19,9 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
-
-      <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto">
+      <section className="pt-24 sm:pt-32 md:pt-40 pb-20 px-6 max-w-7xl mx-auto">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// who_is_this</div>
-        <h1 className="font-display text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.85]">
+        <h1 className="font-display text-4xl sm:text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.9] sm:leading-[0.85]">
           a builder<br />
           <span className="italic text-acid">first,</span><br />
           everything<br />else after.
@@ -49,7 +47,7 @@ function AboutPage() {
           </div>
         </div>
         <div className="lg:col-span-8 space-y-6">
-          <p className="text-2xl md:text-3xl font-display font-semibold leading-snug tracking-tight">
+          <p className="text-xl sm:text-2xl md:text-3xl font-display font-semibold leading-snug tracking-tight">
             I'm a tech lover who can't sit still — soldering one weekend, shipping a startup the next, training a model on Monday.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">

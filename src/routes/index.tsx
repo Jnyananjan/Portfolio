@@ -61,7 +61,7 @@ function Hero() {
       >
         <div className="relative w-full h-full lg:w-[70%]">
           <img
-            src="https://rronjqymokxfprqraeoi.supabase.co/storage/v1/object/public/Images/me.png"
+            src="https://i.ibb.co/9kw0Typn/Gemini-Generated-Image-epe12kepe12kepe1.png"
             alt="Portrait background"
             className="w-full h-full object-cover object-center grayscale contrast-[1.2] opacity-[0.25] mix-blend-screen"
             style={{
@@ -87,14 +87,14 @@ function Hero() {
               v1.0 — portfolio.live
             </div>
 
-            <h1 className="font-display text-[13vw] sm:text-[10vw] lg:text-[8.5rem] xl:text-[10rem] leading-[0.85] font-extrabold tracking-tighter">
+            <h1 className="font-display text-[12vw] sm:text-[10vw] lg:text-[8.5rem] xl:text-[10rem] leading-[0.9] sm:leading-[0.85] font-extrabold tracking-tighter">
               I BUILD<br />
               <span className="text-acid text-glow italic">things</span><br />
               <span className="text-muted-foreground/80">that think.</span>
             </h1>
 
-            <div className="mt-10 max-w-xl">
-              <p className="text-base sm:text-lg text-foreground/90 leading-relaxed font-medium bg-background/40 backdrop-blur-sm p-4 rounded-xl border border-border/50">
+            <div className="mt-8 sm:mt-10 max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/90 leading-relaxed font-medium bg-background/40 backdrop-blur-sm p-4 rounded-xl border border-border/50">
                 Hardware, startups, and software stitched together with curiosity.
                 BTech CSE — AI/ML student turning ideas into circuits, products, and code.
               </p>
@@ -193,7 +193,7 @@ function FeaturedWork() {
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">
             // section_02 — selected_work
           </div>
-          <h2 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter leading-none">
+          <h2 className="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight sm:leading-none">
             systems i've<br />
             <span className="italic text-muted-foreground/70">shipped.</span>
           </h2>
@@ -232,7 +232,7 @@ function FeaturedWork() {
 
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-4">
-                      <h3 className="font-display text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
+                      <h3 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight group-hover:text-acid transition-colors">
                         {p.title}
                       </h3>
                     </div>
@@ -276,13 +276,13 @@ function WhyMeSection() {
   ];
 
   return (
-    <section className="px-6 py-32 border-y border-border bg-surface relative overflow-hidden">
+    <section className="px-6 py-16 sm:py-32 border-y border-border bg-surface relative overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div>
             <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// why_me.log</div>
-            <h2 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-none">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-tight sm:leading-none">
               casual but<br />
               <span className="italic text-acid text-glow">confident.</span>
             </h2>
@@ -311,7 +311,7 @@ function WhyMeSection() {
             </div>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-6 mt-12 lg:mt-0">
             {points.map((p, i) => (
               <motion.div
                 key={i}
@@ -388,7 +388,7 @@ function ToolkitSection() {
 
 function ContactCTA() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden grid-bg border-t border-border">
+    <section className="relative py-16 sm:py-32 px-6 overflow-hidden grid-bg border-t border-border">
       <CircuitTraces />
       <div className="relative max-w-5xl mx-auto text-center">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-6">
@@ -418,7 +418,6 @@ function ContactCTA() {
 function Index() {
   return (
     <main className="bg-background text-foreground min-h-screen overflow-x-hidden">
-      <SiteNav />
       <Hero />
       <Marquee />
       <FeaturedWork />

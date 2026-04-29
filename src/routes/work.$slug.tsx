@@ -24,7 +24,6 @@ export const Route = createFileRoute("/work/$slug")({
   }),
   notFoundComponent: () => (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
       <div className="pt-40 px-6 max-w-3xl mx-auto text-center">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// 404</div>
         <h1 className="font-display text-6xl font-extrabold tracking-tighter">project not found.</h1>
@@ -45,10 +44,9 @@ function ProjectPage() {
 
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
 
       {/* Header Section */}
-      <section className="relative pt-40 pb-20 px-6 overflow-hidden grid-bg border-b border-border">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-20 px-6 overflow-hidden grid-bg border-b border-border">
         <CircuitTraces />
         <div className="relative max-w-7xl mx-auto">
           <Link
@@ -72,7 +70,7 @@ function ProjectPage() {
                   </div>
                 )}
               </div>
-              <h1 className="font-display text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.85]">
+              <h1 className="font-display text-4xl sm:text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.9] sm:leading-[0.85]">
                 {project.title}
               </h1>
               {project.subBadge && (
@@ -162,7 +160,7 @@ function ProjectPage() {
             <div className="space-y-10">
               <div>
                 <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-6">// overview</div>
-                <p className="text-2xl md:text-4xl font-display font-bold leading-tight tracking-tight">
+                <p className="text-xl sm:text-2xl md:text-4xl font-display font-bold leading-tight tracking-tight">
                   {project.overview}
                 </p>
               </div>
@@ -199,7 +197,7 @@ function ProjectPage() {
                 <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid">
                   {project.tag.includes('REAL-TIME') ? '// system_design' : project.tag.includes('WEB') ? '// user_experience_strategy' : '// engineering_challenge'}
                 </div>
-                <p className="text-xl md:text-2xl font-display font-semibold leading-snug">
+                <p className="text-lg sm:text-xl md:text-2xl font-display font-semibold leading-snug">
                   {project.challenge}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-[10px] text-muted-foreground uppercase tracking-widest pt-4">

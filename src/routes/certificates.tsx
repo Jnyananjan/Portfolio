@@ -18,11 +18,9 @@ export const Route = createFileRoute("/certificates")({
 function CertificatesPage() {
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
-
-      <section className="pt-40 pb-32 px-6 max-w-7xl mx-auto">
+      <section className="pt-24 sm:pt-32 md:pt-40 pb-32 px-6 max-w-7xl mx-auto">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// archive — achievements</div>
-        <h1 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter mb-20 leading-none">
+        <h1 className="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-12 sm:mb-20 leading-[0.9] sm:leading-none">
           verified<br />
           <span className="italic text-acid">milestones.</span>
         </h1>

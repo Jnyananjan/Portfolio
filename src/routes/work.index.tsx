@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PROJECTS } from "@/data/projects";
 
@@ -17,12 +16,11 @@ export const Route = createFileRoute("/work/")({
 function WorkPage() {
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
-      <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto">
+      <section className="pt-24 sm:pt-32 md:pt-40 pb-20 px-6 max-w-7xl mx-auto">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">
           // index_of /work
         </div>
-        <h1 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter leading-none">
+        <h1 className="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] sm:leading-none">
           everything<br />
           <span className="italic text-muted-foreground/70">i've made.</span>
         </h1>
@@ -44,7 +42,7 @@ function WorkPage() {
                 className="group relative border border-border bg-card overflow-hidden hover:border-acid/60 transition-all duration-500 flex flex-col w-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-acid/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative p-8 md:p-10 flex flex-col h-full">
+                <div className="relative p-6 md:p-10 flex flex-col h-full">
                   <div className="flex items-start justify-between mb-8">
                     <span className="font-mono text-[10px] text-muted-foreground tracking-widest uppercase">[{p.n}] {p.tag}</span>
                     <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid transition-colors flex-shrink-0">
@@ -54,7 +52,7 @@ function WorkPage() {
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-4">
-                      <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight group-hover:text-acid transition-colors">
+                      <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight group-hover:text-acid transition-colors">
                         {p.title}
                       </h3>
                       {p.badge && (

@@ -47,7 +47,6 @@ function ContactPage() {
 
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <SiteNav />
       <Toaster
         theme="dark"
         position="bottom-right"
@@ -62,11 +61,11 @@ function ContactPage() {
         }}
       />
 
-      <section className="relative pt-40 pb-16 px-6 overflow-hidden grid-bg border-b border-border">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 px-6 overflow-hidden grid-bg border-b border-border">
         <CircuitTraces />
         <div className="relative max-w-7xl mx-auto">
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// open_channel</div>
-          <h1 className="font-display text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.85]">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-8xl xl:text-9xl font-extrabold tracking-tighter leading-[0.9] sm:leading-[0.85]">
             send a<br />
             <span className="italic text-acid text-glow">transmission.</span>
           </h1>
