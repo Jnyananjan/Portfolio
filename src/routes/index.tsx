@@ -8,7 +8,6 @@ import { CircuitTraces } from "@/components/site/CircuitTraces";
 import { PROJECTS } from "@/data/projects";
 
 import { ABOUT_TIMELINE, ABOUT_STACK } from "@/data/about";
-import portrait from "@/assets/portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,7 +61,7 @@ function Hero() {
       >
         <div className="relative w-full h-full lg:w-[70%]">
           <img
-            src={portrait}
+            src="https://rronjqymokxfprqraeoi.supabase.co/storage/v1/object/public/Images/me.png"
             alt="Portrait background"
             className="w-full h-full object-cover object-center grayscale contrast-[1.2] opacity-[0.25] mix-blend-screen"
             style={{

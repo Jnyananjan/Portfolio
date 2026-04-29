@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, CircuitBoard, Cpu, Globe, Bot, Zap, Sparkles } from "lucide-react";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import portrait from "@/assets/portrait.jpg";
 import { ABOUT_STACK, ABOUT_TIMELINE } from "@/data/about";
 
 export const Route = createFileRoute("/about")({
@@ -35,7 +34,7 @@ function AboutPage() {
         <div className="lg:col-span-4 order-first">
           <div className="relative border border-acid/30 overflow-hidden aspect-[4/5] bg-card">
             <img
-              src={portrait}
+              src="https://rronjqymokxfprqraeoi.supabase.co/storage/v1/object/public/Images/me.png"
               alt="Portrait placeholder"
               className="w-full h-full object-cover grayscale contrast-110 mix-blend-luminosity opacity-90"
               loading="lazy"
