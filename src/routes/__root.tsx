@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site/SiteNav";
+import { ChatBot } from "@/components/chat/ChatBot";
 
 import appCss from "../styles.css?url";
 
@@ -70,6 +71,7 @@ function RootComponent() {
     <>
       <SiteNav />
       <Outlet />
+      <ChatBot />
     </>
   );
 }
