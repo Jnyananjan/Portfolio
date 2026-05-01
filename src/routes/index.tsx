@@ -187,7 +187,7 @@ function FeaturedWork() {
   const featuredProjects = PROJECTS.filter((p) => featuredSlugs.includes(p.slug));
 
   return (
-    <section className="relative py-32 px-6 max-w-6xl mx-auto">
+    <section data-assistant-target="work" className="relative py-32 px-6 max-w-6xl mx-auto">
       <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
         <div>
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">
@@ -364,7 +364,7 @@ function TimelineSection() {
 
 function ToolkitSection() {
   return (
-    <section className="px-6 py-20 max-w-7xl mx-auto">
+    <section data-assistant-target="toolkit" className="px-6 py-20 max-w-7xl mx-auto">
       <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// toolkit</div>
       <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter mb-12">
         the <span className="italic text-muted-foreground/70">toolkit.</span>
@@ -388,7 +388,7 @@ function ToolkitSection() {
 
 function ContactCTA() {
   return (
-    <section className="relative py-16 sm:py-32 px-6 overflow-hidden grid-bg border-t border-border">
+    <section data-assistant-target="contact" className="relative py-16 sm:py-32 px-6 overflow-hidden grid-bg border-t border-border">
       <CircuitTraces />
       <div className="relative max-w-5xl mx-auto text-center">
         <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-6">
