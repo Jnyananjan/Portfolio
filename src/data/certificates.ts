@@ -13,6 +13,6 @@ export const CERTIFICATES: Certificate[] = [
     title: "Working on it :)",
     issuer: "Figuring out",
     date: "2026",
-    image: ""
+    image: "https://i.ibb.co/9kw0Typn/Gemini-Generated-Image-epe12kepe12kepe1.png"
   },
 ];

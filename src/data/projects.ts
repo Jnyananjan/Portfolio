@@ -42,6 +42,7 @@ export const PROJECTS: Project[] = [
     badge: "🚀 Live Product",
     subBadge: "ESP32-S3 Powered • Hotswap • Custom firmware",
     websiteUrl: "https://techypad.in/",
+    githubUrl: "https://github.com/Jnyananjan/techy_pad",
     gallery: [
       { url: "https://i.ibb.co/4nMRrsn9/6300548957326741571.jpg", caption: "Production v5" },
       { url: "https://i.ibb.co/svmrQckF/6300548957326741568.jpg", caption: "Development v2" },

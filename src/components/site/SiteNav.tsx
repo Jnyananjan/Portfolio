@@ -36,7 +36,7 @@ export function SiteNav() {
     <>
       {/* ── Top bar (fixed, z-index 900) ── */}
       <header
-        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 900 }}
+        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100000 }}
         className="border-b border-border/50 bg-background"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
@@ -123,25 +123,26 @@ export function SiteNav() {
               // navigation_matrix
             </p>
             {LINKS.map((l) => (
-              <div key={l.to} style={{ marginBottom: "0.5rem" }}>
+              <div key={l.to} style={{ marginBottom: "0.25rem" }}>
                 <Link
                   to={l.to}
                   activeOptions={{ exact: true }}
-                  activeProps={{ className: "text-acid" }}
+                  activeProps={{ style: { color: "var(--acid)" } }}
                   onClick={() => setOpen(false)}
                   style={{
                     display: "block",
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 800,
+                    fontFamily: "var(--font-mono)",
+                    fontWeight: 500,
                     textTransform: "uppercase",
-                    letterSpacing: "-0.03em",
-                    fontSize: "clamp(2.5rem, 10vw, 3.5rem)",
-                    lineHeight: 1.15,
-                    color: "var(--foreground)",
+                    letterSpacing: "0.3em",
+                    fontSize: "1.15rem",
+                    lineHeight: "2.5",
+                    color: "var(--muted-foreground)",
                     textDecoration: "none",
+                    transition: "color 0.2s ease",
                   }}
                 >
-                  {l.label}
+                  /{l.label.toLowerCase()}
                 </Link>
               </div>
             ))}

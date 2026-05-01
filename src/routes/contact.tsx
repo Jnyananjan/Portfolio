@@ -150,7 +150,14 @@ function ContactPage() {
 
           <Field label="04 / message">
             <textarea
-              value={form.message} onChange={update("message")}
+              value={form.message} 
+              onChange={update("message")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                  e.preventDefault();
+                  onSubmit(e as unknown as FormEvent);
+                }
+              }}
               placeholder="tell me what you're building..." required rows={6}
               className="w-full bg-transparent border-0 border-b border-border focus:border-acid outline-none py-2 font-mono text-sm placeholder:text-muted-foreground/50 resize-none"
             />
@@ -158,7 +165,7 @@ function ContactPage() {
 
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4">
             <div className="font-mono text-[10px] text-muted-foreground">
-              {form.message.length} chars · ENTER to break, CMD+RET to send
+              {form.message.length} chars · ENTER to break, CTRL+ENTER to send
             </div>
             <button
               type="submit" disabled={sending}

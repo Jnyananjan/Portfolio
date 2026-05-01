@@ -27,7 +27,7 @@ export const TIMELINE: TimelineItem[] = [
   { year: "2026", title: "Founder @ TechyPad", desc: "Leading design, firmware, and manufacturing for a professional-grade customisable macropad startup." },
   { year: "2026", title: "Built CPL Pro Portal", desc: "Engineered a real-time cricket scoring and analytics platform with sub-100ms sync latency." },
   { year: "2026", title: "Autonomous Robotics", desc: "Developed a high-speed line-following robot with custom PID control loops and telemetry systems." },
-  { year: "2022", title: "Embedded Systems Explorer", desc: "Started the journey with 8-bit microcontrollers, soldering irons, and a lot of burnt components." },
+  { year: "2022", title: "Embedded Systems Explorer", desc: "Started the journey with ESP32, ESP8266 microcontrollers, soldering irons, and a lot of burnt components." },
 ];
 
 export const ABOUT_STACK = STACK;

@@ -27,8 +27,8 @@ function Lightbox({ i, close, next, prev }: { i: number; close: () => void; next
       style={{
         position: "fixed",
         inset: 0,
-        zIndex: 99999,
-        backgroundColor: "rgba(0, 0, 0, 0.98)", // Solid, no backdrop-filter bug
+        zIndex: 110000,
+        backgroundColor: "rgba(0, 0, 0, 0.98)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -41,10 +41,10 @@ function Lightbox({ i, close, next, prev }: { i: number; close: () => void; next
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); close(); }}
         style={{
           position: "absolute",
-          top: "1.5rem",
-          right: "1.5rem",
-          padding: "1rem",
-          zIndex: 100001,
+          top: "clamp(1rem, 5vw, 2rem)",
+          right: "clamp(1rem, 5vw, 2rem)",
+          padding: "0.75rem",
+          zIndex: 110001,
           background: "var(--background)",
           border: "1px solid var(--border)",
           borderRadius: "9999px",
@@ -55,7 +55,7 @@ function Lightbox({ i, close, next, prev }: { i: number; close: () => void; next
           justifyContent: "center"
         }}
       >
-        <X className="w-6 h-6 sm:w-8 sm:h-8" />
+        <X className="w-5 h-5 sm:w-6 sm:h-6" />
       </div>
 
       {/* Main View */}

@@ -130,7 +130,7 @@ function Hero() {
               <BootSequence />
               <div className="mt-6 pt-4 border-t border-border/50 grid grid-cols-3 gap-3 font-mono text-[10px]">
                 <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">+06</div></div>
-                <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">01</div></div>
+                <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">+01</div></div>
                 <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
               </div>
               {/* Animated Corner Brackets */}
@@ -279,39 +279,39 @@ function WhyMeSection() {
     <section className="px-6 py-16 sm:py-32 border-y border-border bg-surface relative overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="grid gap-16 lg:gap-24 items-start">
           <div>
             <div className="font-mono text-xs uppercase tracking-[0.3em] text-acid mb-4">// why_me.log</div>
-            <h2 className="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-tight sm:leading-none">
+            <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter mb-8 leading-tight sm:leading-none">
               casual but<br />
               <span className="italic text-acid text-glow">confident.</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-md leading-relaxed mb-12">
               I don't just write code. I solder circuits, tune PID loops, and build systems that live in the real world.
             </p>
-            <div className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
               <div className="flex items-center gap-4 p-4 border border-border bg-background/50 backdrop-blur-sm group hover:border-acid transition-colors">
-                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid">
+                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid shrink-0">
                   <Zap className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Availability</div>
-                  <div className="font-display font-bold text-lg">Response time: &lt;24 hours</div>
+                  <div className="font-display font-bold text-base sm:text-lg">Response: &lt;24h</div>
                 </div>
               </div>
               <div className="flex items-center gap-4 p-4 border border-border bg-background/50 backdrop-blur-sm group hover:border-acid transition-colors">
-                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid">
+                <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-acid group-hover:text-acid shrink-0">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Opportunities</div>
-                  <div className="font-display font-bold text-lg">Open to internships & collaborations</div>
+                  <div className="font-display font-bold text-base sm:text-lg">Open to Collabs</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-6 mt-12 lg:mt-0">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mt-8">
             {points.map((p, i) => (
               <motion.div
                 key={i}
