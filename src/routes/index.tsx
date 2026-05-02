@@ -5,6 +5,8 @@ import { ArrowUpRight, Sparkles, CircuitBoard, Cpu, Globe, Bot, Zap } from "luci
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { CircuitTraces } from "@/components/site/CircuitTraces";
+import { LoadingScreen } from "@/components/site/LoadingScreen";
+import { Counter } from "@/components/site/Counter";
 import { PROJECTS } from "@/data/projects";
 
 import { ABOUT_TIMELINE, ABOUT_STACK } from "@/data/about";
@@ -19,30 +21,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BOOT_LINES = [
-  "> initializing builder.exe",
-  "> loading modules: hardware, software, ai/ml",
-  "> compiling 4 years of curiosity...",
-  "> system ready ▮",
-];
-
-function BootSequence() {
-  const [shown, setShown] = useState<string[]>([]);
-  useEffect(() => {
-    BOOT_LINES.forEach((line, i) => {
-      setTimeout(() => setShown((s) => [...s, line]), i * 500);
-    });
-  }, []);
-  return (
-    <div className="font-mono text-xs sm:text-sm text-acid/80 space-y-1">
-      {shown.map((l, i) => (
-        <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
-          {l}
-        </motion.div>
-      ))}
-    </div>
-  );
-}
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -100,6 +78,25 @@ function Hero() {
               </p>
             </div>
 
+            <div className="mt-8 flex gap-8 sm:gap-12 font-mono text-[10px] uppercase tracking-widest border-l-2 border-acid/30 pl-6 py-2">
+              <div>
+                <div className="text-muted-foreground mb-1">projects</div>
+                <div className="text-acid text-2xl sm:text-3xl font-bold">
+                  <Counter value={6} />
+                </div>
+              </div>
+              <div>
+                <div className="text-muted-foreground mb-1">startups</div>
+                <div className="text-acid text-2xl sm:text-3xl font-bold">
+                  <Counter value={1} />
+                </div>
+              </div>
+              <div className="hidden sm:block">
+                <div className="text-muted-foreground mb-1">specialization</div>
+                <div className="text-acid text-2xl sm:text-3xl font-bold tracking-tighter">AI/ML</div>
+              </div>
+            </div>
+
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/work"
@@ -117,27 +114,6 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-4">
-            <div className="relative border border-acid/30 bg-background/70 backdrop-blur-xl p-5 scanline overflow-hidden shadow-2xl">
-              <div className="flex items-center justify-between font-mono text-[10px] text-muted-foreground mb-3 uppercase tracking-widest">
-                <span>terminal — boot.log</span>
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 rounded-full bg-muted-foreground/40" />
-                  <div className="w-2 h-2 rounded-full bg-muted-foreground/40" />
-                  <div className="w-2 h-2 rounded-full bg-acid" />
-                </div>
-              </div>
-              <BootSequence />
-              <div className="mt-6 pt-4 border-t border-border/50 grid grid-cols-3 gap-3 font-mono text-[10px]">
-                <div><div className="text-muted-foreground uppercase">projects</div><div className="text-acid text-xl font-bold mt-1">+06</div></div>
-                <div><div className="text-muted-foreground uppercase">startup</div><div className="text-acid text-xl font-bold mt-1">+01</div></div>
-                <div><div className="text-muted-foreground uppercase">domain</div><div className="text-acid text-xl font-bold mt-1">AI/ML</div></div>
-              </div>
-              {/* Animated Corner Brackets */}
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-acid/40 m-2" />
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-acid/40 m-2" />
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -416,16 +392,26 @@ function ContactCTA() {
 }
 
 function Index() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <main className="bg-background text-foreground min-h-screen overflow-x-hidden">
-      <Hero />
-      <Marquee />
-      <FeaturedWork />
-      <TimelineSection />
-      <ToolkitSection />
-      <WhyMeSection />
-      <ContactCTA />
-      <SiteFooter />
-    </main>
+    <>
+      <LoadingScreen onComplete={() => setLoading(false)} />
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 0.8 }}
+        className="bg-background text-foreground min-h-screen overflow-x-hidden"
+      >
+        <Hero />
+        <Marquee />
+        <FeaturedWork />
+        <TimelineSection />
+        <ToolkitSection />
+        <WhyMeSection />
+        <ContactCTA />
+        <SiteFooter />
+      </motion.main>
+    </>
   );
 }
